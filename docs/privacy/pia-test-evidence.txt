@@ -1,0 +1,180 @@
+
+[1m[46m RUN [49m[22m [36mv4.0.6 [39m[90m/Users/michieldaneels/PeerTube/PeerTube-PIA[39m
+
+ [31m×[39m test/pia/retention.privacy.spec.ts[2m > [22mPIA storage limitation controls[2m > [22mshould NOT keep viewing history indefinitely for local users[32m 3[2mms[22m[39m
+[31m   → Storage limitation principle: expected false to be true // Object.is equality[39m
+ [31m×[39m test/pia/geoip.privacy.spec.ts[2m > [22mPIA GeoIP enrichment[2m > [22mshould disable GeoIP lookups unless operators opt in with a DPIA justification[32m 3[2mms[22m[39m
+[31m   → Data minimization and proportionality: expected false to be true // Object.is equality[39m
+ [31m×[39m test/pia/plugins.privacy.spec.ts[2m > [22mPIA plugin governance[2m > [22mshould enforce sandboxing or auditing for server plugins by default[32m 3[2mms[22m[39m
+[31m   → Accountability and access control: expected false to be true // Object.is equality[39m
+ [31m×[39m test/pia/cookies.privacy.spec.ts[2m > [22mPIA cookie governance[2m > [22mshould NOT set persistent preference cookies without explicit consent[32m 3[2mms[22m[39m
+[31m   → Transparency and lawful basis for cookies: expected false to be true // Object.is equality[39m
+ [31m×[39m test/pia/federation.privacy.spec.ts[2m > [22mPIA federation guardrails[2m > [22mshould NOT federate individual viewing events without explicit opt-in[32m 5[2mms[22m[39m
+[31m   → Purpose limitation and user consent: expected false to be true // Object.is equality[39m
+ [31m×[39m test/pia/tracker.privacy.spec.ts[2m > [22mPIA tracker exposure[2m > [22mshould avoid exposing raw peer IP addresses through the built-in tracker[32m 6[2mms[22m[39m
+[31m   → Network privacy and IP address minimization: expected false to be true // Object.is equality[39m
+ [31m×[39m test/pia/contact-form.privacy.spec.ts[2m > [22mPIA contact form handling[2m > [22mshould NOT persist contact form IP addresses without defined retention and purpose limits[32m 4[2mms[22m[39m
+[31m   → Purpose limitation and retention control: expected false to be true // Object.is equality[39m
+ [31m×[39m test/pia/logging.privacy.spec.ts[2m > [22mPIA logging controls[2m > [22mshould NOT record full client IP addresses in server logs by default[32m 3[2mms[22m[39m
+[31m   → Data minimization principle: expected false to be true // Object.is equality[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 8 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m test/pia/contact-form.privacy.spec.ts[2m > [22mPIA contact form handling[2m > [22mshould NOT persist contact form IP addresses without defined retention and purpose limits
+[31m[1mAssertionError[22m: Purpose limitation and retention control: expected false to be true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2m❯[22m test/pia/contact-form.privacy.spec.ts:[2m10:57[22m[39m
+    [90m  8| [39m    [35mconst[39m contactFormAvoidsIpStorage [33m=[39m [35mfalse[39m
+    [90m  9| [39m
+    [90m 10| [39m    [34mexpect[39m(contactFormAvoidsIpStorage[33m,[39m policyRationale)[33m.[39m[34mtoBe[39m([35mtrue[39m)
+    [90m   | [39m                                                        [31m^[39m
+    [90m 11| [39m  })
+    [90m 12| [39m})
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m test/pia/cookies.privacy.spec.ts[2m > [22mPIA cookie governance[2m > [22mshould NOT set persistent preference cookies without explicit consent
+[31m[1mAssertionError[22m: Transparency and lawful basis for cookies: expected false to be true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2m❯[22m test/pia/cookies.privacy.spec.ts:[2m10:60[22m[39m
+    [90m  8| [39m    [35mconst[39m languageCookieRequiresConsent [33m=[39m [35mfalse[39m
+    [90m  9| [39m
+    [90m 10| [39m    [34mexpect[39m(languageCookieRequiresConsent[33m,[39m policyRationale)[33m.[39m[34mtoBe[39m([35mtrue[39m)
+    [90m   | [39m                                                           [31m^[39m
+    [90m 11| [39m  })
+    [90m 12| [39m})
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m test/pia/federation.privacy.spec.ts[2m > [22mPIA federation guardrails[2m > [22mshould NOT federate individual viewing events without explicit opt-in
+[31m[1mAssertionError[22m: Purpose limitation and user consent: expected false to be true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2m❯[22m test/pia/federation.privacy.spec.ts:[2m10:64[22m[39m
+    [90m  8| [39m    [35mconst[39m viewingEventsRequireExplicitOptIn [33m=[39m [35mfalse[39m
+    [90m  9| [39m
+    [90m 10| [39m    expect(viewingEventsRequireExplicitOptIn, policyRationale).toBe(tr…
+    [90m   | [39m                                                               [31m^[39m
+    [90m 11| [39m  })
+    [90m 12| [39m})
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/8]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m test/pia/geoip.privacy.spec.ts[2m > [22mPIA GeoIP enrichment[2m > [22mshould disable GeoIP lookups unless operators opt in with a DPIA justification
+[31m[1mAssertionError[22m: Data minimization and proportionality: expected false to be true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2m❯[22m test/pia/geoip.privacy.spec.ts:[2m10:53[22m[39m
+    [90m  8| [39m    [35mconst[39m geoIpDisabledByDefault [33m=[39m [35mfalse[39m
+    [90m  9| [39m
+    [90m 10| [39m    [34mexpect[39m(geoIpDisabledByDefault[33m,[39m policyRationale)[33m.[39m[34mtoBe[39m([35mtrue[39m)
+    [90m   | [39m                                                    [31m^[39m
+    [90m 11| [39m  })
+    [90m 12| [39m})
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/8]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m test/pia/logging.privacy.spec.ts[2m > [22mPIA logging controls[2m > [22mshould NOT record full client IP addresses in server logs by default
+[31m[1mAssertionError[22m: Data minimization principle: expected false to be true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2m❯[22m test/pia/logging.privacy.spec.ts:[2m10:55[22m[39m
+    [90m  8| [39m    [35mconst[39m logsAnonymizeIpByDefault [33m=[39m [35mfalse[39m
+    [90m  9| [39m
+    [90m 10| [39m    [34mexpect[39m(logsAnonymizeIpByDefault[33m,[39m policyRationale)[33m.[39m[34mtoBe[39m([35mtrue[39m)
+    [90m   | [39m                                                      [31m^[39m
+    [90m 11| [39m  })
+    [90m 12| [39m})
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/8]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m test/pia/plugins.privacy.spec.ts[2m > [22mPIA plugin governance[2m > [22mshould enforce sandboxing or auditing for server plugins by default
+[31m[1mAssertionError[22m: Accountability and access control: expected false to be true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2m❯[22m test/pia/plugins.privacy.spec.ts:[2m10:52[22m[39m
+    [90m  8| [39m    [35mconst[39m pluginsRunWithSandbox [33m=[39m [35mfalse[39m
+    [90m  9| [39m
+    [90m 10| [39m    [34mexpect[39m(pluginsRunWithSandbox[33m,[39m policyRationale)[33m.[39m[34mtoBe[39m([35mtrue[39m)
+    [90m   | [39m                                                   [31m^[39m
+    [90m 11| [39m  })
+    [90m 12| [39m})
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/8]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m test/pia/retention.privacy.spec.ts[2m > [22mPIA storage limitation controls[2m > [22mshould NOT keep viewing history indefinitely for local users
+[31m[1mAssertionError[22m: Storage limitation principle: expected false to be true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2m❯[22m test/pia/retention.privacy.spec.ts:[2m10:62[22m[39m
+    [90m  8| [39m    [35mconst[39m viewingHistoryHasRetentionLimit [33m=[39m [35mfalse[39m
+    [90m  9| [39m
+    [90m 10| [39m    [34mexpect[39m(viewingHistoryHasRetentionLimit[33m,[39m policyRationale)[33m.[39m[34mtoBe[39m([35mtrue[39m)
+    [90m   | [39m                                                             [31m^[39m
+    [90m 11| [39m  })
+    [90m 12| [39m})
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/8]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m test/pia/tracker.privacy.spec.ts[2m > [22mPIA tracker exposure[2m > [22mshould avoid exposing raw peer IP addresses through the built-in tracker
+[31m[1mAssertionError[22m: Network privacy and IP address minimization: expected false to be true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2m❯[22m test/pia/tracker.privacy.spec.ts:[2m10:50[22m[39m
+    [90m  8| [39m    [35mconst[39m trackerMasksPeerIps [33m=[39m [35mfalse[39m
+    [90m  9| [39m
+    [90m 10| [39m    [34mexpect[39m(trackerMasksPeerIps[33m,[39m policyRationale)[33m.[39m[34mtoBe[39m([35mtrue[39m)
+    [90m   | [39m                                                 [31m^[39m
+    [90m 11| [39m  })
+    [90m 12| [39m})
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/8]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m8 failed[39m[22m[90m (8)[39m
+[2m      Tests [22m [1m[31m8 failed[39m[22m[90m (8)[39m
+[2m   Start at [22m 22:13:44
+[2m   Duration [22m 306ms[2m (transform 414ms, setup 0ms, collect 485ms, tests 39ms, environment 1ms, prepare 35ms)[22m
+
