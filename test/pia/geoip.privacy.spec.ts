@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 
 describe('PIA GeoIP enrichment', () => {
@@ -5,7 +6,9 @@ describe('PIA GeoIP enrichment', () => {
     const policyRationale = 'Data minimization and proportionality'
 
     // Evidence: config/default.yaml -> geo_ip.enabled: true with remote database downloads by default
-    const geoIpDisabledByDefault = false
+    const defaultConfig = readFileSync(new URL('../../config/default.yaml', import.meta.url), 'utf8')
+    const geoIpEnabledLine = defaultConfig.match(/geo_ip:\s*\n\s+enabled:\s*(true|false)/)
+    const geoIpDisabledByDefault = geoIpEnabledLine?.[1] === 'false'
 
     expect(geoIpDisabledByDefault, policyRationale).toBe(true)
   })

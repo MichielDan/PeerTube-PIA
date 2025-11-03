@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 
 describe('PIA tracker exposure', () => {
@@ -5,7 +6,9 @@ describe('PIA tracker exposure', () => {
     const policyRationale = 'Network privacy and IP address minimization'
 
     // Evidence: server/core/controllers/tracker.ts logs and rate-limits peers using their raw IP addresses
-    const trackerMasksPeerIps = false
+    const trackerSource = readFileSync(new URL('../../server/core/controllers/tracker.ts', import.meta.url), 'utf8')
+    const usesRawIpAssignments = /params\.httpReq\.ip|params\.ip|logger\.(warn|debug)\('Peer %s made abnormal requests \(%d\).', ip/.test(trackerSource)
+    const trackerMasksPeerIps = usesRawIpAssignments === false
 
     expect(trackerMasksPeerIps, policyRationale).toBe(true)
   })

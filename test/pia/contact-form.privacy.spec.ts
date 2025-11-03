@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 
 describe('PIA contact form handling', () => {
@@ -5,7 +6,12 @@ describe('PIA contact form handling', () => {
     const policyRationale = 'Purpose limitation and retention control'
 
     // Evidence: server/core/controllers/api/server/contact.ts stores submitter IP hashes via Redis.setContactFormIp(req.ip)
-    const contactFormAvoidsIpStorage = false
+    const contactControllerSource = readFileSync(
+      new URL('../../server/core/controllers/api/server/contact.ts', import.meta.url),
+      'utf8'
+    )
+    const avoidsIpStorage = !/setContactFormIp\(req\.ip/.test(contactControllerSource)
+    const contactFormAvoidsIpStorage = avoidsIpStorage
 
     expect(contactFormAvoidsIpStorage, policyRationale).toBe(true)
   })
