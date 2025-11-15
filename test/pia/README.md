@@ -6,7 +6,7 @@ Run: npx vitest run test/pia
 Evidence: see docs/privacy/pia-test-evidence.txt
 These tests intentionally fail to demonstrate current privacy gaps; they'll pass once mitigations are applied.
 
-# What eact test checks
+# What each test checks
 	•	Contact Form: verifies that submitter IP addresses are not stored without a defined purpose or retention limit.
 	•	Cookies: checks that persistent preference cookies (e.g., language) are not set without explicit user consent.
 	•	Federation: ensures individual viewing events are not federated to other instances unless users explicitly opt in.
